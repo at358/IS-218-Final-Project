@@ -1,39 +1,57 @@
 # IS-218-Final-Project
-<?php require_once("includes/connection.php"); ?>
-<?php include_once("includes/form_functions.php"); ?>
-<?php
-    session_start();
-	if(isset($_SESSION['registered'])) {
-		redirect_to("index.php");
-	}
+<?PHP
+require_once("./include/membersite_config.php");
 ?>
-<!DOCTYPE html">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+      <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+      <title>Login</title>
+      <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" />
+      <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
+</head>
+<body>
 
-<?php	
-	// START FORM PROCESSING
-	if (isset($_POST['register'])) { // Form has been submitted.
-		$errors = array();
+<!-- Form Code Start -->
+<div id='fg_membersite'>
+<form id='login' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
+<fieldset >
+<legend>Login</legend>
 
-		// perform validations on the form data
-		$required_fields = array('fName','lName','email','phone','birthday',' gender ', 'password');
-		$errors = array_merge($errors, check_required_fields($required_fields, $_POST));
+<input type='hidden' name='submitted' id='submitted' value='1'/>
 
-		$fields_with_lengths = array('fname' => 30, 'lname' => 30, 'email' => 30,'phone' => 15,,'birthday' => 10, 'gender' => 1,'password' => 30);
-		$errors = array_merge($errors, check_max_field_lengths($fields_with_lengths, $_POST));
-		
-		$email       = trim($_POST['email']);
-		$pass        = trim($_POST['pass']);
-				
-		if (empty($errors) ) {
-			// insert row into mySQL table
-			$query = "INSERT INTO users (fname, lname, email, phone, birthday, gender, password) 
-				VALUES ('{$fname}', '{$lname}','{$email}','{$phone}','{$birthday}','{$gender}','{$password}')";
-			$result = mysql_query($query, $connection);
-			if ($result) {
-				$message = "The user was successfully created.";
-				$_SESSION['registered'] = 1;
-			} else {
-				$message = "The user could not be created.";
-				$message .= "<br />" . mysql_error();
-			}
+<div class='short_explanation'>* required fields</div>
+
+<div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
+<div class='container'>
+    <label for='email' >Email Address*:</label><br/>
+    <input type='text' name='username' id='username' maxlength="50" /><br/>
+    
+</div>
+<div class='container'>
+    <label for='password' >Password*:</label><br/>
+    <input type='password' name='password' id='password' maxlength="50" /><br/>
+
+</div>
+</div>
+
+<div class='container'>
+    <input type='submit' name='Submit' value='Submit' />
+</div>
+<div class='short_explanation'><a href='reset-pwd-req.php'>Forgot Password?</a></div>
+</fieldset>
+</form>
+<!-- client-side Form Validations:
+Uses the excellent form validation script from JavaScript-coder.com-->
+
+<script type='text/javascript'>
+// <![CDATA[
+
+    var frmvalidator  = new Validator("login");
+    frmvalidator.EnableOnPageErrorDisplay();
+    frmvalidator.EnableMsgsTogether();
+    frmvalidator.addValidation("email","req","Please provide your Email Address");  
+    frmvalidator.addValidation("password","req","Please provide the password");
+
+</script>
 
