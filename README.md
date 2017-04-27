@@ -16,7 +16,6 @@ require_once("./include/membersite_config.php");
 
 <div class='short_explanation'>* required fields</div>
 
-<div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
 <div class='container'>
     <label for='email' >Email Address*:</label><br/>
     <input type='text' name='username' id='username' maxlength="50" /><br/>
