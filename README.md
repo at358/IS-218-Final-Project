@@ -4,18 +4,13 @@ require_once("./include/membersite_config.php");
 ?>
 <!DOCTYPE html lang="en">
 <head>
-      <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
-      <title>Login</title>
-      <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" />
-      <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
+      
 </head>
 <body>
 
 <!-- Form Code Start -->
-<div id='fg_membersite'>
-<form id='login' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
 <fieldset >
-<legend>Login</legend>
+<Title>Login</Title>
 
 <input type='hidden' name='submitted' id='submitted' value='1'/>
 
@@ -40,17 +35,5 @@ require_once("./include/membersite_config.php");
 <div class='short_explanation'><a href='reset-pwd-req.php'>Forgot Password?</a></div>
 </fieldset>
 </form>
-<!-- client-side Form Validations:
-Uses the excellent form validation script from JavaScript-coder.com-->
 
-<script type='text/javascript'>
-// <![CDATA[
-
-    var frmvalidator  = new Validator("login");
-    frmvalidator.EnableOnPageErrorDisplay();
-    frmvalidator.EnableMsgsTogether();
-    frmvalidator.addValidation("email","req","Please provide your Email Address");  
-    frmvalidator.addValidation("password","req","Please provide the password");
-
-</script>
 
