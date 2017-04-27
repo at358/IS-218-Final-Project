@@ -1,0 +1,75 @@
+<?PHP
+require_once("./include/membersite_config.php");
+?>
+<!DOCTYPE html>
+<a href="Login.php">Login</a>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+    <title>Registration</title>
+    <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" />
+    <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
+    <link rel="STYLESHEET" type="text/css" href="style/pwdwidget.css" />
+    <script src="scripts/pwdwidget.js" type="text/javascript"></script>      
+</head>
+<body>
+
+<!-- Form Code Start -->
+<div id='fg_membersite'>
+<form id='register' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
+<fieldset >
+<legend>Register</legend>
+
+<input type='hidden' fname='submitted' id='submitted' value='1'/>
+
+<div class='short_explanation'>* required fields</div>
+<input type='text'  class='spmhidip' name='<?php echo $fgmembersite->GetSpamTrapInputName(); ?>' />
+
+<div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
+<div class='container'>
+    <label for='name' >Your First Name*: </label><br/>
+    <input type='text' name='fname' id='fname' value='<?php echo $fgmembersite->SafeDisplay('fname') ?>' maxlength="30" /><br/>
+    <span id='register_fname_errorloc' class='error'></span>
+</div>
+<div class='container'>
+    <label for='name' >Your Last Name*: </label><br/>
+    <input type='text' name='lname' id='lname' value='<?php echo $fgmembersite->SafeDisplay('lname') ?>' maxlength="30" /><br/>
+    <span id='register_lname_errorloc' class='error'></span>
+</div>
+<div class='container'>
+    <label for='email' >Email Address*:</label><br/>
+    <input type='text' name='email' id='email' value='<?php echo $fgmembersite->SafeDisplay('email') ?>' maxlength="30" /><br/>
+    <span id='register_email_errorloc' class='error'></span>
+</div>
+<div class='container'>
+    <label for='phonenumber' >PhoneNumber*:</label><br/>
+    <input type='text' name='phonenumber' id='phonenumber' value='<?php echo $fgmembersite->SafeDisplay('phonenumber') ?>' maxlength="15" /><br/>
+    <span id='register_phonenumber_errorloc' class='error'></span>
+</div>
+<div class='container'>
+    <label for='birthday' >Birthday*:</label><br/>
+    <input type='date' name='birthday' id='birthday' value='<?php echo $fgmembersite->SafeDisplay('birthday') ?>' maxlength="10" /><br/>
+    <span id='register_birthday_errorloc' class='error'></span>
+</div>
+<div class='container'>
+    <label for='gender' >Gender*: </label><br/>
+    <input type='text' name='gender' id='gender' value='<?php echo $fgmembersite->SafeDisplay('gender') ?>' maxlength="1" /><br/>
+    <span id='register_gender_errorloc' class='error'></span>
+</div>
+<div class='container'>
+    <label for='password' >Password*: </label><br/>
+    <input type='VARchars' name='password' id='password' value='<?php echo $fgmembersite->SafeDisplay('password') ?>' maxlength="30" /><br/>
+    <span id='register_gender_errorloc' class='error'></span>
+</div>
+
+<div class='container'>
+    <input type='submit' name='Submit' value='Submit' />
+<a href="login.php">Login</a>
+</div>
+
+</fieldset>
+</form>
+</body>
+</html>
