@@ -3,6 +3,7 @@
 require_once("./include/membersite_config.php");
 ?>
 <!DOCTYPE html lang="en">
+<a href="ToDoList.php?val=1">To Do List</a>
 <head>
       
 </head>
@@ -32,6 +33,7 @@ require_once("./include/membersite_config.php");
     <input type='submit' name='Submit' value='Submit' />
 </div>
 <div class='short_explanation'><a href='reset-pwd-req.php'>Forgot Password?</a></div>
+<a href="ToDoList.php?val=1">To Do List</a>
 </fieldset>
 </form>
 
